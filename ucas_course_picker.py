@@ -26,15 +26,7 @@ def get_cur_time():
     return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
 
 
-def open_pick_page(session):
-    print(get_cur_time(), "正在打开选课主页")
-    app_pick = session.get(Course.app_pick)
-    if "Identity" in app_pick.text:
-        url_redict = app_pick.text.split("window.location.href='")[1].split("'")[0]
-        print(get_cur_time(), "正在跳转至:" + url_redict)
-        session.get(url_redict)
-    else:
-        print(get_cur_time(), "跳转选课网站时失败")
+def pick_course(session):
     page_pick = session.get(Course.course_pick_page)
     soup = BeautifulSoup(page_pick.text, features="html.parser")
     pick_url = soup.find("form", id="regfrm2")["action"]
@@ -54,8 +46,23 @@ def open_pick_page(session):
                 'sids': c_id
             }
             r_save = session.post(save_url, data)
+            print(save_url)
             soup = BeautifulSoup(r_save.text, features="html.parser")
             print(soup.find("body").text.strip())
+
+
+def open_pick_page(session):
+    print(get_cur_time(), "正在打开选课主页")
+    app_pick = session.get(Course.app_pick)
+    if "Identity" in app_pick.text:
+        url_redict = app_pick.text.split("window.location.href='")[1].split("'")[0]
+        print(get_cur_time(), "正在跳转至:" + url_redict)
+        session.get(url_redict)
+    else:
+        print(get_cur_time(), "跳转选课网站时失败")
+
+    while True:
+        pick_course(session)
 
 
 def login():
