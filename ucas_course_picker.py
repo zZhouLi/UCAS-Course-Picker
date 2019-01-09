@@ -65,8 +65,7 @@ def open_pick_page(session):
     else:
         print(get_cur_time(), "跳转选课网站时失败")
 
-    while True:
-        pick_course(session)
+    return session
 
 
 def login():
@@ -87,11 +86,14 @@ def login():
     else:
         print(get_cur_time(), "登录失败")
         sys.exit(-1)
-    open_pick_page(session)
+    return session
 
 
 def main():
-    login()
+    login_session = login()
+    pick_session = open_pick_page(login_session)
+    while True:
+        pick_course(pick_session)
 
 
 if __name__ == "__main__":
