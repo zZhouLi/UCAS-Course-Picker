@@ -6,7 +6,7 @@ import sys
 
 class Config:
     username = "your_email@email.com"
-    password = "your_passeord"
+    password = "your_password"
     courses = { 
         # "course_code":"dept_id"  
         # like:     "156560": "964"
