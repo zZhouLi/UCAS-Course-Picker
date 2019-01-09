@@ -33,9 +33,10 @@ def pick_course(session):
 
     identity = pick_url.split("?s=")[1]
     print(identity)
-
+    count = 0
     for c_id, dept_id in Config.courses.items():
         if c_id in page_pick.text:
+            count += 1
             print(get_cur_time(), "【课程号】:" + c_id + " 已选！")
             continue
         else:
@@ -49,6 +50,9 @@ def pick_course(session):
             print(save_url)
             soup = BeautifulSoup(r_save.text, features="html.parser")
             print(soup.find("body").text.strip())
+    if count == len(Config.courses.items()):
+        print(get_cur_time(), "所有课程都已经选上")
+        sys.exit(0)
 
 
 def open_pick_page(session):
