@@ -33,7 +33,7 @@ courses = {
 
   - Login the http://sep.ucas.cn
 
-  - Click ![](https://ws2.sinaimg.cn/large/006tNc79ly1fz0cu2yg0vj305q058jrq.jpg)
+  - Click ![](https://ws2.sinaimg.cn/small/006tNc79ly1fz0cu2yg0vj305q058jrq.jpg)
 
   - Select `school timetable`
 
@@ -45,4 +45,4 @@ courses = {
 
 - How to find `dept_id`
 
-  ![](https://ws1.sinaimg.cn/large/006tNc79ly1fz0d0ecwikj31el0u0x1j.jpg)
+  ![](https://ws1.sinaimg.cn/large/006tNc79ly1fz0d6n18kpj31fl0u04qq.jpg)
